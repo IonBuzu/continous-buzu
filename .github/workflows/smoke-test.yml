@@ -1,5 +1,5 @@
 
-name: CI
+name: Smoke environment test
 
 on:
   workflow_run:
