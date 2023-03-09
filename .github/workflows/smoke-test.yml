@@ -6,11 +6,7 @@ on:
     workflows: ["Smoke environment deploy"]
     types:
       - completed
-  pull_request:
-     branches:
-      - main
-     types: 
-      - labeled 
+  workflow_dispatch:
 
 jobs:
   test: 
@@ -24,7 +20,7 @@ jobs:
           exit 1
 
   skip-test:
-    if: github.event.label.name == 'skip-tests' 
+    if: github.event_name == 'workflow_dispatch' 
     runs-on: ubuntu-latest
     steps:
       - name: Skip test job
