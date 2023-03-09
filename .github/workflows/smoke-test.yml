@@ -16,7 +16,9 @@ jobs:
    steps:
       - uses: actions/checkout@v3
       - name: Test job
-        run: echo 'Run smoke tests'
+        run: |
+          echo 'Simulate failed smoke tests'
+          echo $GITHUB.SOMETHING
 
   skip-test:
     if: github.event.label.name == 'skip-tests' 
