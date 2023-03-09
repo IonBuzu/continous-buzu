@@ -18,7 +18,7 @@ jobs:
       - name: Test job
         run: |
           echo 'Simulate failed smoke tests'
-          echo $GITHUB.SOMETHING
+          exit 1
 
   skip-test:
     if: github.event.label.name == 'skip-tests' 
