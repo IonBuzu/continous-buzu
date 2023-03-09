@@ -2,16 +2,25 @@
 name: CI
 
 on:
-
+  workflow_run:
+    workflows: ["Smoke environment deploy"]
+    types:
+      - completed
   pull_request:
      types: [ labeled ]
 
 jobs:
-  test:
+  test: 
+   if: ${{ github.event.workflow_run.conclusion == 'success' }}
+   runs-on: ubuntu-latest
+   steps:
+      - uses: actions/checkout@v3
+      - name: Test job
+        run: echo 'Run smoke tests'
+
+  skip-test:
     if: github.event.label.name == 'skip-tests' 
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Test jobs
-        run: echo 'Smoke tests'
+      - name: Skip test job
+        run: echo 'Skip smoke tests'
