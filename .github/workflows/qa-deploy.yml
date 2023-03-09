@@ -1,0 +1,14 @@
+name: QA environment deploy
+on:
+  workflow_run:
+    workflows: ["Smoke environment test"]
+    types:
+      - completed
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy job
+        run: echo 'Run qa deploy'
