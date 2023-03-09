@@ -7,10 +7,10 @@ on:
     types:
       - completed
   pull_request:
-     types: 
-     - labeled 
      branches:
-     - main
+      - main
+     types: 
+      - labeled 
 
 jobs:
   test: 
