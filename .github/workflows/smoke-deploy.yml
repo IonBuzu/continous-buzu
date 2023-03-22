@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: Deploy job
         run: |
-          echo "${{ needs.deploy.outputs.output1 }}"
+          echo "${{ job.deploy.outputs.output1 }}"
