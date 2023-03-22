@@ -21,7 +21,7 @@ jobs:
       - name: Test job
         run: |
           echo 'Simulate failed smoke tests!'
-          echo "$git log -1 --pretty=format:'%s'"
+          echo "$(git log -1 --pretty=format:'%s')"
 
 
   skip-test:
