@@ -16,4 +16,4 @@ jobs:
         run: |
           echo "${{ github.event.head_commit.message }}"
           echo "${{ toJSON(github.event) }}"
-          echo "${{ outputs.output1 }}"
+          echo "${{ job.deploy.outputs.output1 }}"
