@@ -13,4 +13,7 @@ jobs:
    steps:
       - uses: actions/checkout@v3
       - name: Deploy job
-        run: echo  "${{ github.event.head_commit.message }}"
+        run: |
+          echo "${{ github.event.head_commit.message }}"
+          echo "${{ toJSON(github.event) }}"
+          echo "${{ outputs.output1 }}"
