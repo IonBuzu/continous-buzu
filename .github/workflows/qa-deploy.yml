@@ -10,5 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy job
-        run: echo 'Run qa deploy'
+      - uses: kceb/pull-request-url-action@v1
+        id: pr-url
+      - name: Echo PR data
+        run: |
+          echo "${{ steps.pr-url.outputs.url }}"
+          echo "$(git log -1 --pretty=format:'%s')"
+          echo "$(git log -1 --pretty=format:'%an')"
