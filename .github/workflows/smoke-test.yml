@@ -1,30 +1,29 @@
-
 name: Smoke environment test
 
 on:
   workflow_run:
-    workflows: ["Smoke environment deploy"]
+    workflows: ['Smoke environment deploy']
     types:
       - completed
   workflow_dispatch:
 
 jobs:
-  test: 
-   if: ${{ github.event.workflow_run.conclusion == 'success' }}
-   runs-on: ubuntu-latest
-   steps:
+  test:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
       - uses: kceb/pull-request-url-action@v1
         id: pr-url
       - name: Echo PR data
         run: |
-          echo "${{ steps.pr-url.outputs.url }}"
-          echo "$(git log -1 --pretty=format:'%s')"
-          echo "$(git log -1 --pretty=format:'%an')"
-
+          echo PR_URL: "${{ steps.pr-url.outputs.url }}"
+          echo HEAD_COMMIT_MESSAGE: "$(git log -1 --pretty=format:'%s')"
+          echo HEAD_COMMIT_SHA: "$(git log -1 --pretty=format:'%H')"
+          echo HEAD_COMMIT_AUTHOR: "$(git log -1 --pretty=format:'%an')"
 
   skip-test:
-    if: github.event_name == 'workflow_dispatch' 
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Skip test job
