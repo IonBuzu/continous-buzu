@@ -1,7 +1,7 @@
 name: QA environment deploy
 on:
   workflow_run:
-    workflows: ["Smoke environment test"]
+    workflows: ['Smoke environment test']
     types:
       - completed
 jobs:
@@ -14,6 +14,7 @@ jobs:
         id: pr-url
       - name: Echo PR data
         run: |
-          echo "${{ steps.pr-url.outputs.url }}"
-          echo "$(git log -1 --pretty=format:'%s')"
-          echo "$(git log -1 --pretty=format:'%an')"
+          echo PR_URL: "${{ steps.pr-url.outputs.url }}"
+          echo HEAD_COMMIT_MESSAGE: "$(git log -1 --pretty=format:'%s')"
+          echo HEAD_COMMIT_SHA: "$(git log -1 --pretty=format:'%H')"
+          echo HEAD_COMMIT_AUTHOR: "$(git log -1 --pretty=format:'%an')"
