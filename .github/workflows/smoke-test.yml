@@ -34,7 +34,3 @@ jobs:
       - name: Echo merged pull request data
         run: |
           echo PULL_REQUEST_URL: "${{ steps.pr-url.outputs.url }}"
-          echo HEAD_COMMIT_MESSAGE: "$(git log -1 --pretty=format:'%s')"
-          echo HEAD_COMMIT_SHA: "$(git log -1 --pretty=format:'%H')"
-          echo HEAD_COMMIT_DATE: "$(git show -s --format=%ci $(git log -1 --pretty=format:'%H'))"
-          echo HEAD_COMMIT_AUTHOR: "$(git log -1 --pretty=format:'%an')"
