@@ -16,12 +16,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: kceb/pull-request-url-action@v1
         id: pr-url
-      - name: Echo PR URL
-        run: echo "${{ steps.pr-url.outputs.url }}"
-      - name: Test job
+      - name: Echo PR data
         run: |
-          echo 'Simulate failed smoke tests!'
+          echo "${{ steps.pr-url.outputs.url }}"
           echo "$(git log -1 --pretty=format:'%s')"
+          echo "$(git log -1 --pretty=format:'%an')"
 
 
   skip-test:
