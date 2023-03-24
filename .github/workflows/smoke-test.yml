@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: kceb/pull-request-url-action@v1
+      - uses: kceb/pull-request-url-action@v2
         id: pr-url
       - name: Echo merged pull request data
         run: |
@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Skip test job
         run: echo 'Skip smoke tests'
-      - uses: kceb/pull-request-url-action@v1
+      - uses: kceb/pull-request-url-action@v2
         id: pr-url
       - name: Echo merged pull request data
         run: |
