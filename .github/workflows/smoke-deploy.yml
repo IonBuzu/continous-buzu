@@ -12,7 +12,7 @@ jobs:
       output1: ${{ github.event.head_commit.message }}
    steps:
       - uses: actions/checkout@v3
-      - uses: kceb/pull-request-url-action@v1
+      - uses: kceb/pull-request-url-action@v2
         id: pr-url
       - name: Echo PR URL
         run: echo "${{ steps.pr-url.outputs.url }}"
